@@ -24,7 +24,6 @@
           - terminator
           - sgt-puzzles
           - kdegames
-          - fastfetch
         state: latest
 
     - name: Install multiple packages

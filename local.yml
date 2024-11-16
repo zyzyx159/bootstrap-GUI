@@ -18,5 +18,14 @@
         name:
           - kde-standard
           - brave-browser
+          - firefox
           - flatpak
+          - terminator
+          - sgt-puzzles
+          - kdegames
         state: latest
+    - name: Install multiple packages
+      community.general.flatpak:
+        name:
+          - com.bitwarden.desktop
+          - org.keepassxc.KeePassXC

@@ -2,6 +2,8 @@
 - name: "run local"
   hosts: localhost
   connection: local
+  become: true
+  become_method: sudo
   tasks:
     - name: Brave get GPG keys
       ansible.builtin.get_url:
@@ -24,9 +26,7 @@
           - sgt-puzzles
           - kdegames
       state: latest
-    become: true
-    become_method: sudo
-    
+
     - name: Install multiple packages
       community.general.flatpak:
         name:

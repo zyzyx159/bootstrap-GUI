@@ -23,9 +23,9 @@
           - terminator
           - sgt-puzzles
           - kdegames
-        state: latest
-        become: true
-        become_method: sudo
+      state: latest
+      become: true
+      become_method: sudo
     - name: Install multiple packages
       community.general.flatpak:
         name:

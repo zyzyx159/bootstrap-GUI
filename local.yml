@@ -3,22 +3,20 @@
   hosts: localhost
   connection: local
   tasks:
-  - name: One way to avoid apt_key once it is removed from your distro, armored keys should use .asc extension, binary should use .gpg
-    block:
-      - name: Brave get GPG keys
-        ansible.builtin.get_url:
-          url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-          dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+    - name: Brave get GPG keys
+      ansible.builtin.get_url:
+        url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+        dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
 
-      - name: Brave add repo
-        ansible.builtin.apt_repository:
-          repo: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
-          state: present
+    - name: Brave add repo
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
+        state: present
 
-    - name: install base GUI apps
-      apt:
-        name:
-          - kde-standard
-          - brave-browser
-          - flatpak
-        state: latest
+  - name: install base GUI apps
+    apt:
+      name:
+        - kde-standard
+        - brave-browser
+        - flatpak
+      state: latest

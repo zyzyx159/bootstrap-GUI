@@ -3,55 +3,15 @@
   hosts: localhost
   connection: local
   tasks:
-    - name: change shell
-      user:
-        name: zyzyx
-        shell: /bin/zsh
-    - name: make git folder
-      file:
-        path: "{{ item.folder }}"
-        owner: zyzyx
-        group: zyzyx
-        state: directory
-        mode: "0770"
-      with_items:
-        - { folder: /home/zyzyx/git/ }
-        - { folder: /home/zyzyx/.config/ }
-    - name: clone dotFiles
-      ansible.builtin.git:
-        repo: https://github.com/zyzyx159/dotFiles
-        dest: /home/zyzyx/git/dotFiles
-        depth: 1
-        clone: yes
-        update: yes
-    - name: delete original dot files
-      file:
-        path: "{{ item }}"
-        state: absent
-      with_items:
-        - ~/.config/custScripts
-        - ~/.gitconfig
-        - ~/.config/starship.toml
-        - ~/.config/terminator
-        - ~/.config/tmux
-        - ~/.zshrc
-    - name: link dot files
-      file:
-        src: "{{ item.src }}"
-        dest: "{{ item.dest }}"
-        owner: zyzyx
-        group: zyzyx
-        state: link
-        mode: "740"
-      with_items:
-          - { src: /home/zyzyx/git/dotFiles/custScripts, dest: /home/zyzyx/.config/custScripts }
-          - { src: ~/git/dotFiles/gitconfig/gitconfig, dest: ~/.gitconfig }
-          - { src: ~/git/dotFiles/starship/starship.toml, dest: ~/.config/starship.toml }
-          - { src: "~/git/dotFiles/terminator", dest: "~/.config/terminator" }
-          - { src: "~/git/dotFiles/tmux", dest: "~/.config/tmux" }
-          - { src: "~/git/dotFiles/zsh/zshrc", dest: "~/.zshrc" }
-    - name: tmux plugin manager dotFiles
-      ansible.builtin.git:
-        repo: git@github.com:tmux-plugins/tpm.git
-        dest: /home/zyzyx/.config/tmux/plugins/tpm
-        depth: 1
+    - name: Add Brave Browser repository
+      apt_repository:
+        repo: "ppa:brave/brave"
+        state: present
+
+    - name: install base GUI apps
+      apt:
+        name:
+          - kde-standard
+          - brave-browser
+          - flatpak
+        state: latest

@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   become: true
+  --ask-become-pass
   tasks:
     - name: Brave get GPG keys
       ansible.builtin.get_url:
@@ -22,7 +23,7 @@
 
     - name: install base GUI apps
       apt:
-        name:
+        name:git@github.com:zyzyx159/bootstrap-GUI.git
           - kde-standard
           - brave-browser
           - firefox

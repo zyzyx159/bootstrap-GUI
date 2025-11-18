@@ -2,8 +2,7 @@
 - name: "run local"
   hosts: localhost
   connection: local
-  become: true
-  --ask-become-pass
+  become: ask-become-pass
   tasks:
     - name: Brave get GPG keys
       ansible.builtin.get_url:

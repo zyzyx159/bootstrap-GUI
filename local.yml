@@ -1,3 +1,4 @@
+---
 - name: "run local"
   hosts: localhost
   connection: local

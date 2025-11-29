@@ -4,10 +4,10 @@
     ssh_key_filename: ed25519_key
   tasks:
   
-     - name: Download Brave GPG key
-       ansible.builtin.get_url:
-         url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-         dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+    - name: Download Brave GPG key
+      ansible.builtin.get_url:
+        url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+        dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
 
     - name: Add Brave repository
       ansible.builtin.shell: |

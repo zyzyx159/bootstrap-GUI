@@ -39,3 +39,4 @@
           - com.github.fastfetch/fastfetch
           - org.libretro.RetroArch
           - md.obsidian.Obsidian
+          - io.neovim.nvim

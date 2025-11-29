@@ -1,8 +1,7 @@
 ---
-- name: "run local"
-  hosts: localhost
-  connection: local
-  become: ask-become-pass
+- hosts: all
+  vars:
+    ssh_key_filename: ed25519_key
   tasks:
     - name: Brave get GPG keys
       ansible.builtin.get_url:

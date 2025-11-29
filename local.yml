@@ -21,7 +21,7 @@
 
     - name: install base GUI apps
       apt:
-        name:git@github.com:zyzyx159/bootstrap-GUI.git
+        name:
           - kde-standard
           - brave-browser
           - firefox

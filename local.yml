@@ -26,7 +26,7 @@
           - brave-browser
           - firefox
           - flatpak
-          - terminator
+          - kitty
           - sgt-puzzles
           - kdegames
         state: latest
